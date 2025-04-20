@@ -2,8 +2,10 @@ package com.ssafy.mvc.model.dao;
 
 import com.ssafy.mvc.model.dto.Board;
 import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface BoardDao {
     void insertBoard(Board board);
     Board selectBoard(Long id);

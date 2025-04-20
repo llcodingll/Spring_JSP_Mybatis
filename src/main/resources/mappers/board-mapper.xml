@@ -2,13 +2,14 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.ssafy.mvc.model.dao.BoardDao">
-  <insert id="insertBoard" parameterType="BoardDTO">
+  <insert id="insertBoard" parameterType="Board">
     INSERT INTO board (title, content, writer, created_at, file_name, original_file_name)
     VALUES (#{title}, #{content}, #{writer}, NOW(), #{fileName}, #{originalFileName})
   </insert>
 
-  <select id="selectBoardList" resultType="BoardDTO">
+  <select id="selectBoardList" resultType="Board">
     SELECT * FROM board
     <where>
       <if test="keyword != null and keyword != ''">
@@ -18,11 +19,11 @@
     ORDER BY created_at DESC
   </select>
 
-  <select id="selectBoard" resultType="BoardDTO">
+  <select id="selectBoard" resultType="Board">
     SELECT * FROM board WHERE id = #{id}
   </select>
 
-  <update id="updateBoard" parameterType="BoardDTO">
+  <update id="updateBoard" parameterType="Board">
     UPDATE board
     SET title = #{title}, content = #{content}
     WHERE id = #{id}
